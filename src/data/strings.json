@@ -1,0 +1,263 @@
+{
+  "job.provided.label.four-major-social-insurances": {
+    "KO_KR": "4대 보험"
+  },
+  "job.provided.label.national-pension": {
+    "KO_KR": "국민연금"
+  },
+  "job.provided.label.health-insurance": {
+    "KO_KR": "건강보험"
+  },
+  "job.provided.label.employment-insurance": {
+    "KO_KR": "고용보험"
+  },
+  "job.provided.label.industrial-accident-compensation-insurance": {
+    "KO_KR": "산재보험"
+  },
+  "job.provided.label.additional-allowances": {
+    "KO_KR": "추가수당"
+  },
+  "job.provided.label.weekly-holiday-allowance": {
+    "KO_KR": "주휴수당"
+  },
+  "job.provided.label.holiday-work-allowance": {
+    "KO_KR": "휴일근로수당"
+  },
+  "job.provided.label.night-shift-allowance": {
+    "KO_KR": "야간근로수당"
+  },
+  "job.provided.label.overtime-work-allowance": {
+    "KO_KR": "시간외근로수당"
+  },
+  "job.provided.label.long-service-allowance": {
+    "KO_KR": "장기근속수당"
+  },
+  "job.provided.label.wage-increase-for-long-term-service": {
+    "KO_KR": "장기근무시급인상"
+  },
+  "job.provided.label.hazard-allowance": {
+    "KO_KR": "위험수당"
+  },
+  "job.provided.label.severance-pay": {
+    "KO_KR": "퇴직금"
+  },
+  "job.provided.label.bonuses": {
+    "KO_KR": "보너스"
+  },
+  "job.provided.label.performance-bonus": {
+    "KO_KR": "성과급"
+  },
+  "job.provided.label.regular-bonus": {
+    "KO_KR": "정기보너스"
+  },
+  "job.provided.label.holiday-bonus": {
+    "KO_KR": "명절보너스"
+  },
+  "job.provided.label.incentive-system": {
+    "KO_KR": "인센티브제"
+  },
+  "job.provided.label.summer-vacation-allowance": {
+    "KO_KR": "여름휴가비"
+  },
+  "job.provided.label.congratulatory-and-condolence-money": {
+    "KO_KR": "경조금"
+  },
+  "job.provided.label.leave-system": {
+    "KO_KR": "휴가제도"
+  },
+  "job.provided.label.monthly-leave": {
+    "KO_KR": "월차"
+  },
+  "job.provided.label.annual-leave": {
+    "KO_KR": "연차"
+  },
+  "job.provided.label.regular-leave": {
+    "KO_KR": "정기휴가"
+  },
+  "job.provided.label.meal-support": {
+    "KO_KR": "식사 지원"
+  },
+  "job.provided.label.breakfast-provided": {
+    "KO_KR": "조식 제공"
+  },
+  "job.provided.label.lunch-provided": {
+    "KO_KR": "중식 제공"
+  },
+  "job.provided.label.dinner-provided": {
+    "KO_KR": "석식 제공"
+  },
+  "job.provided.label.accommodation-support": {
+    "KO_KR": "숙박 지원"
+  },
+  "job.provided.label.dormitory-provided": {
+    "KO_KR": "기숙사 제공"
+  },
+  "job.provided.label.rent-support": {
+    "KO_KR": "월세지원"
+  },
+  "job.provided.label.rest-support": {
+    "KO_KR": "휴식 지원"
+  },
+  "job.provided.label.break-time": {
+    "KO_KR": "휴게시간"
+  },
+  "job.provided.label.staff-lounge": {
+    "KO_KR": "직원휴게실"
+  },
+  "job.provided.label.transportation-support": {
+    "KO_KR": "교통 지원"
+  },
+  "job.provided.label.commuter-bus-operation": {
+    "KO_KR": "통근버스 운행"
+  },
+  "job.provided.label.vehicle-maintenance-allowance": {
+    "KO_KR": "차량유지비 지원"
+  },
+  "job.provided.label.fuel-support": {
+    "KO_KR": "차량유류대 지원"
+  },
+  "job.provided.label.transportation-allowance": {
+    "KO_KR": "교통비 지원"
+  },
+  "job.provided.label.parking-available": {
+    "KO_KR": "주차 가능"
+  },
+  "job.provided.label.health-support": {
+    "KO_KR": "건강 지원"
+  },
+  "job.provided.label.paid-health-check-up": {
+    "KO_KR": "유료 건강검진"
+  },
+  "job.provided.label.other-supports": {
+    "KO_KR": "기타 지원"
+  },
+  "job.provided.label.employee-tuition-support": {
+    "KO_KR": "본인 학자금 지원"
+  },
+  "job.provided.label.child-education-support": {
+    "KO_KR": "자녀 학자금 지원"
+  },
+  "job.provided.label.family-health-check-up-support": {
+    "KO_KR": "가족 건강검진 지원"
+  },
+  "job.provided.label.uniform-support": {
+    "KO_KR": "근무복 지원"
+  },
+  "job.provided.label.work-shoes-support": {
+    "KO_KR": "근무화 지원"
+  },
+  "job.preferential.label.preferred-education-level": {
+    "KO_KR": "선호학력"
+  },
+  "job.preferential.label.bachelors-degree-or-higher": {
+    "KO_KR": "대졸 이상"
+  },
+  "job.preferential.label.high-school-graduate-or-higher": {
+    "KO_KR": "고졸 이상"
+  },
+  "job.preferential.label.middle-school-graduate-or-higher": {
+    "KO_KR": "중졸 이상"
+  },
+  "job.preferential.label.no-matter-preferred-education-level": {
+    "KO_KR": "학력 무관"
+  },
+  "job.preferential.label.experience": {
+    "KO_KR": "경력"
+  },
+  "job.preferential.label.experienced": {
+    "KO_KR": "경력"
+  },
+  "job.preferential.label.entry-level": {
+    "KO_KR": "신입"
+  },
+  "job.preferential.label.no-matter-experience": {
+    "KO_KR": "경력 무관"
+  },
+  "job.preferential.label.korean-language-proficiency": {
+    "KO_KR": "한국어"
+  },
+  "job.preferential.label.topik-level-5-6": {
+    "KO_KR": "TOPIK 5~6"
+  },
+  "job.preferential.label.topik-level-3-4": {
+    "KO_KR": "TOPIK 3~4"
+  },
+  "job.preferential.label.topik-level-2": {
+    "KO_KR": "TOPIK 2"
+  },
+  "job.preferential.label.topik-level-1": {
+    "KO_KR": "TOPIK 1"
+  },
+  "job.preferential.label.no-matter-korean-language-proficiency": {
+    "KO_KR": "한국어 능력 무관"
+  },
+  "job.preferential.label.long-term-employment": {
+    "KO_KR": "장기근속"
+  },
+  "job.preferential.label.candidates-willing-to-work-for-3-years-or-more": {
+    "KO_KR": "3년 이상 근무 희망자"
+  },
+  "job.preferential.label.candidates-willing-to-work-for-1-year-or-more": {
+    "KO_KR": "1년 이상 근무 희망자"
+  },
+  "job.preferential.label.no-matter-long-term-employment": {
+    "KO_KR": "근속 무관"
+  },
+  "job.preferential.title.bachelors-degree-or-higher": {
+    "KO_KR": "대학교를 졸업한 인재를 선호합니다. 학력 조건에 맞지 않더라도 도전하고 싶다면, 이력서에 나를 잘 표현해서 지원해 보세요."
+  },
+  "job.preferential.title.high-school-graduate-or-higher": {
+    "KO_KR": "고등학교 졸업 이상의 인재를 찾고 있어요. 고졸 이상의 학력과 열정을 보여 주세요."
+  },
+  "job.preferential.title.middle-school-graduate-or-higher": {
+    "KO_KR": "중학교 졸업 이상이라면 충분합니다. 배우려는 의지를 이력서에 담아 도전해 보세요."
+  },
+  "job.preferential.title.no-matter-preferred-education-level": {
+    "KO_KR": "학력에 관계없이 열정과 의지만 있다면 누구나 지원 가능합니다. 이력서에 당신의 열정을 담아보세요."
+  },
+  "job.preferential.title.experienced": {
+    "KO_KR": "동일한 업·직종에서 일했던 경험이 있는 인재를 선호합니다. 유사한 경력이라도 있다면, 이력서에 담아서 지원해 보세요."
+  },
+  "job.preferential.title.entry-level": {
+    "KO_KR": "경력이 없어도 지원할 수 있어요. 처음부터 차근차근 배워나갈 의지가 있는 분을 찾습니다."
+  },
+  "job.preferential.title.no-matter-experience": {
+    "KO_KR": "경력 유무와 상관 없이 지원 가능합니다. 관심이 있다면 지원해 보세요."
+  },
+  "job.preferential.title.topik-level-5-6": {
+    "KO_KR": "TOPIK 5~6급 수준의 고급 한국어 능력을 갖춘 인재를 선호합니다. 능숙한 한국어 실력을 자신 있게 이력서에 담아 보세요."
+  },
+  "job.preferential.title.topik-level-3-4": {
+    "KO_KR": "TOPIK 3~4급의 상급 수준 한국어가 가능한 인재를 선호하는 업체예요. TOPIK 등급이 없더라도 한국어 말하기나 듣기를 잘 한다면 자신감을 가지고 지원해 보세요."
+  },
+  "job.preferential.title.topik-level-2": {
+    "KO_KR": "간단한 한국어 이해 및 의사소통이 가능한 인재를 선호합니다. 한국어 실력을 보여주고 지원해 보세요."
+  },
+  "job.preferential.title.topik-level-1": {
+    "KO_KR": "기초적인 한국어 능력이 있으면 충분합니다. 아직 완벽하지 않더라도 도전해 보세요."
+  },
+  "job.preferential.title.no-matter-korean-language-proficiency": {
+    "KO_KR": "한국어 실력과 관계없이 지원할 수 있습니다. 한국어를 못해도 걱정하지 마세요! 다른 강점으로 자신을 어필하고 도전해 보세요."
+  },
+  "job.preferential.title.candidates-willing-to-work-for-3-years-or-more": {
+    "KO_KR": "3년 이상 같이 일할 수 있는 인재를 선호합니다. 안정적으로 한 직장에서 장기간 일하고 싶다면, 이력서에서 장기근속 여부를 체크하고 지원해 보세요."
+  },
+  "job.preferential.title.candidates-willing-to-work-for-1-year-or-more": {
+    "KO_KR": "1년 이상 근무할 의지가 있는 분들을 찾고 있어요. 안정적인 근무를 원한다면 이력서에 지원 의지를 표현해 보세요."
+  },
+  "job.preferential.title.no-matter-long-term-employment": {
+    "KO_KR": "근무 기간과 관계 없이 지원 가능합니다. 지금의 열정으로 도전해 보세요."
+  },
+  "job.preferential.desc.education": {
+    "KO_KR": "학력 조건에 맞지 않더라도 도전하고 싶다면, 이력서에 나를 잘 표현해서 지원해 보세요."
+  },
+  "job.preferential.desc.experience": {
+    "KO_KR": "동일한 업·직종의 경험은 아니더라도 비슷한 경험을 한 적이 있다면, 이력서에 경험을 담아서 지원해 보세요."
+  },
+  "job.preferential.desc.korean": {
+    "KO_KR": "TOPIK 등급이 없더라도 한국어 말하기나 듣기를 잘 한다면, 이력서 작성 후 자신감을 가지고 지원해 보세요."
+  },
+  "job.preferential.desc.long-term-contract": {
+    "KO_KR": "안정적으로 한 직장에서 장기간 일하고 싶다면, 이력서에서 장기근속 여부를 체크하고 지원해 보세요."
+  }
+}
