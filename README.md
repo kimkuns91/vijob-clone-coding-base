@@ -47,6 +47,7 @@
 - **Storybook**을 사용하여 UI 컴포넌트 작성
 - Jest를 이용하여 **테스트 코드** 작성 (Given-When-Then 패턴)
 - 상태 관리가 필요하다면 **Context API** 또는 적절한 라이브러리 활용
+- 프로젝트 실행 방법이 포함된 **README 파일**
 
 ## 제공 사항
 
@@ -60,5 +61,4 @@
 
 ## 제출물
 
-- GitHub 저장소 링크
-- 프로젝트 실행 방법이 포함된 **README 파일**
+- **GitHub 저장소 링크**를 **service@vijob.net** 으로 보내주세요
