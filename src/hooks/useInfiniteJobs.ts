@@ -1,24 +1,9 @@
+import { IJob } from "@/interface";
 import jobSample from "@/data/job.sample.json";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-interface Job {
-  id: number;
-  payAmount: number;
-  startTime: string;
-  endTime: string;
-  categoryId: number;
-  workWeekDays: string[];
-  isClosed: boolean;
-  business: {
-    name: string;
-    address: {
-      roadAddress: string;
-    };
-  };
-}
-
 interface JobsResponse {
-  jobs: Job[];
+  jobs: IJob[];
   nextCursor: number | null;
 }
 

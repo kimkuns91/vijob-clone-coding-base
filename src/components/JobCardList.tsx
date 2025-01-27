@@ -1,5 +1,7 @@
 "use client";
 
+import { getCategoryName, getLocationName } from "@/utils/job";
+
 import JobCard from "@/components/JobCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import jobCategories from "@/data/job-categories.json";
@@ -11,21 +13,6 @@ const JobCardList = () => {
   const { ref: loadMoreRef, inView } = useInView();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteJobs();
-
-  // 카테고리 ID로 카테고리명을 찾는 함수
-  const getCategoryName = (categoryId?: number) => {
-    if (!categoryId) return "";
-    return (
-      jobCategories.find((category) => category.id === categoryId)?.i18nNames
-        .KO_KR || ""
-    );
-  };
-
-  // 주소에서 동/읍/면만 추출하는 함수
-  const getLocationName = (address: string) => {
-    const matches = address.match(/[가-힣]+(동|읍|면)$/);
-    return matches ? matches[0] : address;
-  };
 
   // 무한 스크롤 구현
   useEffect(() => {
@@ -41,18 +28,22 @@ const JobCardList = () => {
     <div className="flex flex-col gap-5">
       <div className="grid grid-cols-2 gap-5">
         {data.pages.map((page) =>
-          page.jobs.map((job) => (
-            <JobCard
-              key={job.id}
-              company={job.business.name}
-              categories={getCategoryName(job.categoryId)}
-              workDays={job.workWeekDays.join("/")}
-              workHours={`${job.startTime} ~ ${job.endTime}`}
-              salary={`월급 ${job.payAmount.toLocaleString()} 원`}
-              status={job.isClosed ? "채용시마감" : "상시채용"}
-              location={getLocationName(job.business.address.roadAddress)}
-            />
-          ))
+          page.jobs.map((job) => {
+            const category = getCategoryName(job.categoryId, jobCategories);
+            const location = getLocationName(job.business.address.roadAddress);
+            return (
+              <JobCard
+                key={job.id}
+                company={job.business.name}
+                categories={category}
+                workDays={job.workWeekDays.join("/")}
+                workHours={`${job.startTime} ~ ${job.endTime}`}
+                salary={`월급 ${job.payAmount.toLocaleString()} 원`}
+                status={job.isClosed ? "채용시마감" : "상시채용"}
+                location={location}
+              />
+            );
+          })
         )}
       </div>
 

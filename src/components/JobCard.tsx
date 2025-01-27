@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface JobCardProps {
   company: string;
   categories: string;
@@ -20,7 +22,10 @@ const JobCard = ({
   companyLogo = "/logo/vijob-app.png",
 }: JobCardProps) => {
   return (
-    <div className="relative flex flex-col w-full gap-[10px] vijob-activatable">
+    <Link
+      href={`/ko/job/100`}
+      className="relative flex flex-col w-full gap-[10px] vijob-activatable"
+    >
       {/* 카드 메인 */}
       <div
         className="flex items-start p-4 relative rounded-[20px] bg-white"
@@ -80,7 +85,7 @@ const JobCard = ({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
