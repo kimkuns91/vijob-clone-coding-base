@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import animate from "tailwindcss-animate"
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -51,11 +51,20 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        blue: {
+          500: "rgb(0 146 251 / var(--tw-bg-opacity, 1))",
+          600: "rgb(0 131 226 / var(--tw-bg-opacity, 1))",
+          700: "rgb(0 117 201 / var(--tw-bg-opacity, 1))",
+        },
+        "vijob-blue": "rgb(0 146 251 / var(--tw-bg-opacity, 1))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        pretendard: ["var(--font-pretendard)"],
       },
     },
   },
