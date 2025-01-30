@@ -46,10 +46,21 @@ export interface IBusiness {
   websiteUrl: string;
   address: IAddress;
 }
-
 export interface IAddress {
   zipCode: string | null;
   provinceCode: string;
   cityCode: string;
   roadAddress: string;
+}
+
+export interface IProvinces {
+  code: string;
+  name: string;
+}
+
+export interface ICity {
+  provinceCode: string;
+  code: string;
+  name: string;
+  address: string;
 }
