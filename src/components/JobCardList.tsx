@@ -1,19 +1,36 @@
-"use client";
+'use client';
 
-import { getCategoryName, getLocationName } from "@/utils/job";
+import { getCategoryName, getLocationName } from '@/utils/job';
 
-import JobCard from "@/components/JobCard";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import jobCategories from "@/data/job-categories.json";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import { useInfiniteJobs } from "@/hooks/useInfiniteJobs";
+import JobCard from '@/components/JobCard';
+import JobCardListSkeleton from './JobCardListSkeleton';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import NoJobList from './NoJobList';
+import jobCategories from '@/data/job-categories.json';
+import { useEffect } from 'react';
+import { useFilterStore } from '@/store';
+import { useInView } from 'react-intersection-observer';
+import { useInfiniteJobs } from '@/hooks/useInfiniteJobs';
 
 const JobCardList = () => {
   const { ref: loadMoreRef, inView } = useInView();
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useInfiniteJobs();
+  const {
+    search,
+    selectedProvinces,
+    selectedCity,
+    jobCategory,
+    isRecruitment,
+  } = useFilterStore();
 
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+    useInfiniteJobs({
+      search,
+      provinceCode: selectedProvinces?.code,
+      cityCode: selectedCity?.code,
+      categoryIds: jobCategory?.map((cat) => cat.id),
+      isRecruitment,
+    });
+  console.log(isRecruitment);
   // 무한 스크롤 구현
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -21,8 +38,12 @@ const JobCardList = () => {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-  if (status === "pending") return <div>로딩중...</div>;
-  if (status === "error") return <div>에러가 발생했습니다</div>;
+  if (status === 'pending') return <JobCardListSkeleton />;
+  if (status === 'error') return <div>에러가 발생했습니다</div>;
+
+  // 모든 페이지의 jobs 배열이 비어있는지 확인
+  const hasNoJobs = data.pages.every((page) => page.jobs.length === 0);
+  if (hasNoJobs) return <NoJobList />;
 
   return (
     <div className="flex flex-col gap-5">
@@ -36,10 +57,10 @@ const JobCardList = () => {
                 key={job.id}
                 company={job.business.name}
                 categories={category}
-                workDays={job.workWeekDays.join("/")}
+                workDays={job.workWeekDays.join('/')}
                 workHours={`${job.startTime} ~ ${job.endTime}`}
                 salary={`월급 ${job.payAmount.toLocaleString()} 원`}
-                status={job.isClosed ? "채용시마감" : "상시채용"}
+                status={job.isClosed ? '채용시마감' : '상시채용'}
                 location={location}
               />
             );
