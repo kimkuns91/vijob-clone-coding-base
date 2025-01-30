@@ -1,4 +1,6 @@
-import { FC } from "react";
+import { FC } from 'react';
+import Lottie from 'lottie-react';
+import radialBlur from '../../../assets/lottie/radial-blur.json';
 
 const HeroSection: FC = () => {
   return (
@@ -27,14 +29,22 @@ const HeroSection: FC = () => {
               </div>
               {/* 추후 다시 설정 필요 */}
               <div className="relative w-[140px] h-[50px] flex justify-center items-center bg-white rounded-[10px] overflow-hidden">
-                <div className="absolute">
-                  <div
-                    className="relative w-full h-[181px] bg-no-repeat bg-contain"
+                <div className="absolute inset-0">
+                  <Lottie
+                    animationData={radialBlur}
+                    loop
+                    className="w-full h-full"
                     style={{
-                      backgroundImage: "url('/logo/vijob-ai.black.svg')",
+                      transform: 'scale(2.1)',
                     }}
                   />
                 </div>
+                <div
+                  className="relative w-[108px] h-[32px] bg-no-repeat bg-contain"
+                  style={{
+                    backgroundImage: "url('/logo/vijob-ai.black.svg')",
+                  }}
+                />
               </div>
             </div>
 
@@ -51,7 +61,7 @@ const HeroSection: FC = () => {
               <div className="relative w-full h-fit">
                 <div
                   className="relative bg-white size-[74px] p-[8px] rounded-[10px]"
-                  style={{ boxShadow: "0px 0px 0px 4px black" }}
+                  style={{ boxShadow: '0px 0px 0px 4px black' }}
                 >
                   <div
                     className="relative size-full bg-no-repeat bg-contain"

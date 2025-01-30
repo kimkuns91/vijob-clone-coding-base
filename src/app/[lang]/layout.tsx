@@ -1,6 +1,6 @@
-import BottomNav from "@/components/layout/BottomNav";
-import { Language } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
+import BottomNav from '@/components/layout/BottomNav';
+import { Language } from '@/lib/i18n';
+import { cn } from '@/lib/utils';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,22 +9,22 @@ interface LayoutProps {
   };
 }
 
-export default function Layout({ children, params: { lang } }: LayoutProps) {
+export default function Layout({ children, params }: LayoutProps) {
   return (
     <div
       className={cn(
-        "w-full",
+        'w-full',
         // 테스트 CSS 추후 삭제
-        "h-screen bg-slate-100"
+        'h-screen bg-slate-100'
       )}
-      lang={lang}
+      lang={params.lang}
     >
       <div className="overflow-hidden w-full h-full">
         <div className="flex flex-col relative w-full h-full vijob-bg-color overflow-hidden pointer-events-auto">
           <div className="relative w-full h-full overflow-x-hidden overflow-y-auto transition-all">
             <div className="flex flex-col w-full h-full overflow-hidden">
               {children}
-              <BottomNav lang={lang} />
+              <BottomNav lang={params.lang} />
             </div>
           </div>
         </div>
