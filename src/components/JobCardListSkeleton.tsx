@@ -9,11 +9,21 @@
  */
 
 import Lottie from 'lottie-react';
+import { cn } from '@/lib/utils';
 import loadingAnimation from '../../assets/lottie/vijob-loading.white.json';
 
-const JobCardListSkeleton = () => {
+interface JobCardListSkeletonProps {
+  className?: string;
+}
+
+const JobCardListSkeleton = ({ className = '' }: JobCardListSkeletonProps) => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-full p-8">
+    <div
+      className={cn(
+        'flex flex-col justify-center items-center w-full h-full p-8',
+        className
+      )}
+    >
       <div className="w-24 h-24">
         <Lottie animationData={loadingAnimation} loop={true} autoplay={true} />
       </div>

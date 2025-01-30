@@ -9,16 +9,12 @@ interface LayoutProps {
   };
 }
 
-export default function Layout({ children, params }: LayoutProps) {
+export default async function Layout({ children, params }: LayoutProps) {
+  const lang = await Promise.resolve(params.lang);
+  console.log('lang', lang);
+
   return (
-    <div
-      className={cn(
-        'w-full',
-        // 테스트 CSS 추후 삭제
-        'h-screen bg-slate-100'
-      )}
-      lang={params.lang}
-    >
+    <div className={cn('w-full')}>
       <div className="overflow-hidden w-full h-full">
         <div className="flex flex-col relative w-full h-full vijob-bg-color overflow-hidden pointer-events-auto">
           <div className="relative w-full h-full overflow-x-hidden overflow-y-auto transition-all">

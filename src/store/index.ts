@@ -61,15 +61,8 @@ export const useFilterStore = create<IFilterStore>((set, get) => ({
   setIsOccupationSheetOpen: (isOpen) => set({ isOccupationSheetOpen: isOpen }),
 
   // 검색 관련
-  keyword: sessionStorage.getItem('searchKeyword'),
-  setKeyword: (keyword) => {
-    if (keyword) {
-      sessionStorage.setItem('searchKeyword', keyword);
-    } else {
-      sessionStorage.removeItem('searchKeyword');
-    }
-    set({ keyword });
-  },
+  keyword: null,
+  setKeyword: (keyword) => set({ keyword }),
 
   search: sessionStorage.getItem('search'),
   setSearch: (search) => {
@@ -132,7 +125,6 @@ export const useFilterStore = create<IFilterStore>((set, get) => ({
 
   // 초기화 관련
   clearSearch: () => {
-    sessionStorage.removeItem('searchKeyword');
     sessionStorage.removeItem('search');
     set({ search: null, keyword: null });
   },

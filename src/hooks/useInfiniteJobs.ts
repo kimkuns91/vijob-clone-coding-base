@@ -22,6 +22,7 @@ const fetchJobs = async (
 ): Promise<JobsResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
+  console.log(params);
   let filteredJobs = Array(8)
     .fill(jobSample)
     .map((job, index) => ({
@@ -40,13 +41,13 @@ const fetchJobs = async (
 
   if (params.provinceCode) {
     filteredJobs = filteredJobs.filter(
-      (job) => job.address.provinceCode === params.provinceCode
+      (job) => job.business.address.provinceCode === params.provinceCode
     );
   }
 
   if (params.cityCode) {
     filteredJobs = filteredJobs.filter(
-      (job) => job.address.cityCode === params.cityCode
+      (job) => job.business.address.cityCode === params.cityCode
     );
   }
 

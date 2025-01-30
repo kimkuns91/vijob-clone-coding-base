@@ -6,13 +6,7 @@
     "startTime": "09:00",
     "endTime": "18:00",
     "categoryId": 2002,
-    "workWeekDays": [
-        "MON",
-        "TUE",
-        "WED",
-        "THU",
-        "FRI"
-    ],
+    "workWeekDays": ["MON", "TUE", "WED", "THU", "FRI"],
     "isClosed": false,
     "business": {
         "id": 30,

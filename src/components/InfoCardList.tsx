@@ -6,6 +6,11 @@ import InfoCard from "./InfoCard";
 import { generateDummyJobs } from "@/utils/dummyData";
 import { useRouter } from "next/navigation";
 
+// 상수 값을 상단에 정의
+const SWIPE_THRESHOLD = 50;
+const CARD_WIDTH = 366;
+const CARD_MARGIN = 32;
+
 const InfoCardList = ({ currentId }: { currentId: number }) => {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,13 +36,10 @@ const InfoCardList = ({ currentId }: { currentId: number }) => {
     const currentTouch = e.touches[0].clientX;
     const diff = touchStart - currentTouch;
 
-    if (Math.abs(diff) > 50) {
-      // 50px 이상 스와이프했을 때
+    if (Math.abs(diff) > SWIPE_THRESHOLD) {
       if (diff > 0 && currentIndex < jobs.length - 1) {
-        // 왼쪽으로 스와이프
         router.push(`/ko/job/${jobs[currentIndex + 1].id}`);
       } else if (diff < 0 && currentIndex > 0) {
-        // 오른쪽으로 스와이프
         router.push(`/ko/job/${jobs[currentIndex - 1].id}`);
       }
       setTouchStart(null);
@@ -60,9 +62,9 @@ const InfoCardList = ({ currentId }: { currentId: number }) => {
       <div
         className="absolute top-0 h-fit z-0 px-[5px]"
         style={{
-          width: "366px",
-          marginLeft: "calc(32px)",
-          left: `${currentIndex * -366}px`,
+          width: `${CARD_WIDTH}px`,
+          marginLeft: `calc(${CARD_MARGIN}px)`,
+          left: `${currentIndex * -CARD_WIDTH}px`,
           transition: "left 0.3s ease-out",
         }}
       >
@@ -70,7 +72,7 @@ const InfoCardList = ({ currentId }: { currentId: number }) => {
           <div
             key={job.id}
             className="absolute"
-            style={{ left: `${jobs.indexOf(job) * 366}px` }}
+            style={{ left: `${jobs.indexOf(job) * CARD_WIDTH}px` }}
           >
             <InfoCard
               business={job.business}

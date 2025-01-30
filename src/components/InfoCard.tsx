@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { IBusiness } from "@/interface";
-import { useState } from "react";
+import { IBusiness } from '@/interface';
+import { useState } from 'react';
 
 interface InfoCardProps {
   business: IBusiness;
@@ -29,24 +29,24 @@ const InfoCard = ({
   return (
     <div
       className="relative w-full cursor-pointer"
-      style={{ perspective: "732px", perspectiveOrigin: "center 96px" }}
+      style={{ perspective: '732px', perspectiveOrigin: 'center 96px' }}
       onClick={() => setIsFlipped(!isFlipped)}
     >
       {/* 뒷면 - 회사 정보 */}
       <div
         className="absolute w-full min-h-48 overflow-hidden rounded-[23px] transition-transform duration-700"
         style={{
-          height: "346px",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-          borderWidth: "3px",
-          borderStyle: "solid",
-          borderColor: "rgba(217, 217, 217, 0)",
-          backgroundOrigin: "border-box",
-          backgroundClip: "border-box",
+          height: '346px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          borderWidth: '3px',
+          borderStyle: 'solid',
+          borderColor: 'rgba(217, 217, 217, 0)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'border-box',
           backgroundImage:
-            "linear-gradient(165deg, rgb(30, 126, 246), rgb(240, 97, 37), rgb(61, 167, 88), rgb(0, 0, 0))",
-          transform: `rotateY(${isFlipped ? "0deg" : "-180deg"})`,
-          backfaceVisibility: "hidden",
+            'linear-gradient(165deg, rgb(30, 126, 246), rgb(240, 97, 37), rgb(61, 167, 88), rgb(0, 0, 0))',
+          transform: `rotateY(${isFlipped ? '0deg' : '-180deg'})`,
+          backfaceVisibility: 'hidden',
         }}
       >
         <div className="size-full bg-white p-[16px]">
@@ -68,7 +68,7 @@ const InfoCard = ({
                 {/* 기업 상세 정보 그리드 */}
                 <div
                   className="w-full grid gap-x-5 gap-y-[10px]"
-                  style={{ gridTemplateColumns: "auto minmax(50%, 1fr)" }}
+                  style={{ gridTemplateColumns: 'auto minmax(50%, 1fr)' }}
                 >
                   <p className="font-semibold text-neutral-800 text-xs leading-4">
                     기업명
@@ -126,17 +126,17 @@ const InfoCard = ({
       <div
         className="absolute w-full min-h-48 overflow-hidden rounded-[23px] transition-transform duration-700"
         style={{
-          height: "346px",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-          borderWidth: "3px",
-          borderStyle: "solid",
-          borderColor: "rgba(217, 217, 217, 0)",
-          backgroundOrigin: "border-box",
-          backgroundClip: "border-box",
+          height: '346px',
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          borderWidth: '3px',
+          borderStyle: 'solid',
+          borderColor: 'rgba(217, 217, 217, 0)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'border-box',
           backgroundImage:
-            "linear-gradient(165deg, rgb(30, 126, 246), rgb(240, 97, 37), rgb(61, 167, 88), rgb(0, 0, 0))",
-          transform: `rotateY(${isFlipped ? "180deg" : "0deg"})`,
-          backfaceVisibility: "hidden",
+            'linear-gradient(165deg, rgb(30, 126, 246), rgb(240, 97, 37), rgb(61, 167, 88), rgb(0, 0, 0))',
+          transform: `rotateY(${isFlipped ? '180deg' : '0deg'})`,
+          backfaceVisibility: 'hidden',
         }}
       >
         <div className="size-full bg-white p-[28px]">
@@ -191,7 +191,7 @@ const InfoCard = ({
                         style={{ backgroundImage: "url('/icons/clock.svg')" }}
                       />
                       <div className="font-semibold text-neutral-800 text-[13px] tracking-[-0.26px] leading-4">
-                        <p>{workDays.join("/")}</p>
+                        <p>{workDays.join('/')}</p>
                         <p>
                           {workTime.start} ~ {workTime.end}
                         </p>

@@ -1,7 +1,7 @@
-import DetailBottomNav from "@/components/layout/DetailBottmNav";
-import InfoCard from "@/components/InfoCard";
-import { generateDummyJobs } from "@/utils/dummyData";
-import { notFound } from "next/navigation";
+import DetailBottomNav from '@/components/layout/DetailBottmNav';
+import InfoCard from '@/components/InfoCard';
+import { generateDummyJobs } from '@/utils/dummyData';
+import { notFound } from 'next/navigation';
 
 interface JobDetailPageProps {
   params: {
@@ -39,7 +39,7 @@ export default function JobDetailPage({
             {/* 무한 좌우 스크롤 카드 구현 해야 함. api router를 쓰는게 나은지 고민 필요, 현재 카드 목록 데이터 넣어놓음*/}
             <InfoCard
               business={job.business}
-              title={job.i18nTitle[params.lang === "ko" ? "KO_KR" : "EN_US"]}
+              title={job.i18nTitle[params.lang === 'ko' ? 'KO_KR' : 'EN_US']}
               salary={job.payAmount}
               category="건설 · 현장"
               period="1개월 이상"
