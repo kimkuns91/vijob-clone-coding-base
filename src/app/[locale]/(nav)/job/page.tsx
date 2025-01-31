@@ -2,8 +2,12 @@ import CountRecentJob from '@/components/CountRecentJob';
 import Header from '@/components/layout/Header';
 import JobCardList from '@/components/JobCardList';
 import RecruitmentController from '@/components/RecruitmentController';
+import { useTranslations } from 'next-intl';
 
-export default async function JobPage() {
+export default function JobPage() {
+  const t = useTranslations('JobPage');
+  console.log(t('title'));
+
   return (
     <>
       <Header />

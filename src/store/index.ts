@@ -1,4 +1,12 @@
 import { ICity, IJobCategory, IProvinces } from '@/interface';
+import {
+  getLocalStorageItem,
+  getSessionStorageItem,
+  removeLocalStorageItem,
+  removeSessionStorageItem,
+  setLocalStorageItem,
+  setSessionStorageItem,
+} from '@/lib/storage';
 
 import { create } from 'zustand';
 
@@ -64,72 +72,76 @@ export const useFilterStore = create<IFilterStore>((set, get) => ({
   keyword: null,
   setKeyword: (keyword) => set({ keyword }),
 
-  search: sessionStorage.getItem('search'),
+  search: getSessionStorageItem('search'),
   setSearch: (search) => {
     if (search) {
-      sessionStorage.setItem('search', search);
+      setSessionStorageItem('search', search);
     } else {
-      sessionStorage.removeItem('search');
+      removeSessionStorageItem('search');
     }
     set({ search });
   },
 
   // 지역 선택 관련
-  selectedProvinces: JSON.parse(localStorage.getItem('selectedProvinces') || 'null'),
+  selectedProvinces: JSON.parse(
+    getLocalStorageItem('selectedProvinces') || 'null'
+  ),
   setSelectedProvinces: (province) => {
     if (province) {
-      localStorage.setItem('selectedProvinces', JSON.stringify(province));
+      setLocalStorageItem('selectedProvinces', JSON.stringify(province));
     } else {
-      localStorage.removeItem('selectedProvinces');
+      removeLocalStorageItem('selectedProvinces');
     }
     set({
       selectedProvinces: province,
-      selectedCity: null, // 시/도가 변경되면 구/군 초기화
+      selectedCity: null,
     });
   },
 
-  selectedCity: JSON.parse(localStorage.getItem('selectedCity') || 'null'),
+  selectedCity: JSON.parse(getLocalStorageItem('selectedCity') || 'null'),
   setSelectedCity: (city) => {
     if (city) {
-      localStorage.setItem('selectedCity', JSON.stringify(city));
+      setLocalStorageItem('selectedCity', JSON.stringify(city));
     } else {
-      localStorage.removeItem('selectedCity');
+      removeLocalStorageItem('selectedCity');
     }
     set({ selectedCity: city });
   },
 
   // 직종 필터
-  jobCategory: JSON.parse(localStorage.getItem('jobCategory') || 'null'),
+  jobCategory: JSON.parse(getLocalStorageItem('jobCategory') || 'null'),
   setJobCategory: (jobCategory) => {
-    const newJobCategory = typeof jobCategory === 'function'
-      ? jobCategory(get().jobCategory)
-      : jobCategory;
-      
+    const newJobCategory =
+      typeof jobCategory === 'function'
+        ? jobCategory(get().jobCategory)
+        : jobCategory;
+
     if (newJobCategory) {
-      localStorage.setItem('jobCategory', JSON.stringify(newJobCategory));
+      setLocalStorageItem('jobCategory', JSON.stringify(newJobCategory));
     } else {
-      localStorage.removeItem('jobCategory');
+      removeLocalStorageItem('jobCategory');
     }
-    
+
     set({ jobCategory: newJobCategory });
   },
 
   // 채용 중 관련
-  isRecruitment: sessionStorage.getItem('isRecruitment') !== null 
-    ? sessionStorage.getItem('isRecruitment') === 'true'
-    : true, // 기본값을 true로 설정
+  isRecruitment:
+    getSessionStorageItem('isRecruitment') !== null
+      ? getSessionStorageItem('isRecruitment') === 'true'
+      : true,
   setIsRecruitment: (isRecruitment) => {
-    sessionStorage.setItem('isRecruitment', String(isRecruitment));
+    setSessionStorageItem('isRecruitment', String(isRecruitment));
     set({ isRecruitment });
   },
 
   // 초기화 관련
   clearSearch: () => {
-    sessionStorage.removeItem('search');
+    removeSessionStorageItem('search');
     set({ search: null, keyword: null });
   },
   clearJobCategory: () => {
-    localStorage.removeItem('jobCategory');
+    removeLocalStorageItem('jobCategory');
     set({ jobCategory: null });
   },
 }));

@@ -1,0 +1,24 @@
+{
+    "ChatPage": {
+        "title": "ChatPage"
+    },
+    "CommunityPage": {
+        "title": "CommunityPage"
+    },
+    "ContentPage": {
+        "title": "ContentPage"
+    },
+    "JobPage": {
+        "title": "JobPage"
+    },
+    "SettingPage": {
+        "title": "SettingPage"
+    },
+    "BottomNav": {
+        "home": "Home",
+        "community": "Community",
+        "content": "Content",
+        "chat": "Chat",
+        "setting": "Setting"
+    }
+}

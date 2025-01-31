@@ -1,0 +1,24 @@
+{
+    "ChatPage": {
+        "title": "채팅"
+    },
+    "CommunityPage": {
+        "title": "커뮤니티"
+    },
+    "ContentPage": {
+        "title": "콘텐츠"
+    },
+    "JobPage": {
+        "title": "채용"
+    },
+    "SettingPage": {
+        "title": "내 정보"
+    },
+    "BottomNav": {
+        "home": "홈",
+        "community": "커뮤니티",
+        "content": "콘텐츠",
+        "chat": "채팅",
+        "setting": "내 정보"
+    }
+}

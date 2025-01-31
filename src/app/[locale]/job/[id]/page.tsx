@@ -4,19 +4,15 @@ import { generateDummyJobs } from '@/utils/dummyData';
 import { notFound } from 'next/navigation';
 
 interface JobDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-    lang: string;
-  };
-  searchParams: {
-    from?: string;
-    author?: string;
-    title?: string;
-  };
+  }>;
 }
 
-export default function JobDetailPage({ params }: JobDetailPageProps) {
-  const jobId = parseInt(params.id, 10);
+export default async function JobDetailPage({ params }: JobDetailPageProps) {
+  const { id } = await params;
+
+  const jobId = parseInt(id, 10);
   const allJobs = generateDummyJobs();
   const job = allJobs.find((job) => job.id === jobId);
 
@@ -43,6 +39,14 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
             /> */}
           </div>
           <JobDetail />
+          <JobDetail />
+          <JobDetail />
+          <JobDetail />
+          <JobDetail />
+          <JobDetail />
+          <JobDetail />
+          <JobDetail />
+          <div className="w-full h-[56px]" />
         </div>
       </div>
       <DetailBottomNav />
