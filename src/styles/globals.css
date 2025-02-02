@@ -86,6 +86,13 @@
     font-size: 1.25rem;
     line-height: 1.875rem;
   }
+
+  .text-headline1 {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    letter-spacing: -0.05rem;
+    font-weight: 600;
+  }
   .text-body1 {
     color: #f2f4f6;
     font-size: 1rem;
@@ -96,7 +103,7 @@
   .vijob-wrap-text {
     word-break: keep-all;
     overflow-wrap: anywhere;
-}
+  }
 }
 
 @layer utilities {

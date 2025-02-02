@@ -6,7 +6,7 @@ interface JobCardProps {
   workDays: string;
   workHours: string;
   salary: string;
-  status: "상시채용" | "채용시마감";
+  status: string;
   location?: string;
   companyLogo?: string;
 }
