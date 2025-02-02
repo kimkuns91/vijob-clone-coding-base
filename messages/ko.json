@@ -9,7 +9,26 @@
         "title": "콘텐츠"
     },
     "JobPage": {
-        "title": "채용"
+        "title": "채용",
+        "nationwide": "전국",
+        "searchPlaceholder": "일자리를 검색해보세요",
+        "greeting": "환영해요!",
+        "gs25": "전국 GS25 편의점 아르바이트 및 직원채용",
+        "reset": "초기화",
+        "closingOfRecruitment": "채용시마감",
+        "fullTimeEmployment": "상시채용",
+        "jobCategory": "직종",
+        "recruitment": "채용 중",
+        "todayNewJobs": "오늘 새로 등록된 일자리 전국 <strong>{count}</strong> 건",
+        "salary": "월급 {amount} 원"
+    },
+    "JobDetailPage": {
+        "prefer": "이런 분들을 선호해요!",
+        "provide": "이런 것들을 제공해요!",
+        "location": "위치",
+        "details": "상세정보",
+        "period": "접수 기간",
+        "exampleDetail": "(주)hy에서 프레시 매니저 모집\n\n일자리 상세\n    • 업무내용: 고정고객 및 정기구독 고객 배달, 활동 지역: 인근 지역 배정, 활동 시간: 협의 가능, 추가 활동 가능, 개인 사정에 따라 시간 조율 가능, 운동 삼아 가볍게 일할 수 있음\n    • 근무요일: 월, 화, 수, 목, 금요일\n    • 근무기간: 1년이상(협의가능)\n    • 급여: 연봉 170만원 이상\n\n지원자 조건\n    • 초보 가능\n    • 외국인 가능\n    • 장기 근무 가능자\n    • 인근 거주자\n    • 운전면허 소지자\n    • 원동기 면허 소지자\n\n복리후생\n    • 고용보험\n    • 산재보험\n    • 건강검진 지원\n    • 미취학 아동 보육료 지원\n    • 소액(저금리) 대출 지원\n    • 해외여행 기회 제공\n    • 결혼축하금\n    • 사망조의금\n    • 요양/재해 위로금 지원"
     },
     "SettingPage": {
         "title": "내 정보"

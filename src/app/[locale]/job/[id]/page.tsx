@@ -38,14 +38,9 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
               location={job.address.roadAddress}
             /> */}
           </div>
-          <JobDetail />
-          <JobDetail />
-          <JobDetail />
-          <JobDetail />
-          <JobDetail />
-          <JobDetail />
-          <JobDetail />
-          <JobDetail />
+          <div className="flex flex-col px-4 py-[30px] gap-[30px] mb-16 transition-opacity duration-200 opacity-100">
+            <JobDetail />
+          </div>
           <div className="w-full h-[56px]" />
         </div>
       </div>

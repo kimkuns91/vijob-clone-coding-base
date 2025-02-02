@@ -10,7 +10,10 @@
 
 import { useEffect, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 const CountRecentJob = () => {
+  const t = useTranslations('JobPage');
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -21,8 +24,12 @@ const CountRecentJob = () => {
 
   return (
     <p className="text-sm text-neutral-600">
-      오늘 새로 등록된 일자리 전국{' '}
-      <span className="text-blue-500 font-semibold">{count}</span> 건
+      {t.rich('todayNewJobs', {
+        count, // 숫자를 문자열로 변환하여 전달
+        strong: (chunks) => (
+          <span className="text-blue-500 font-semibold">{chunks}</span>
+        ),
+      })}
     </p>
   );
 };
