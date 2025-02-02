@@ -11,8 +11,10 @@ import { useEffect } from 'react';
 import { useFilterStore } from '@/store';
 import { useInView } from 'react-intersection-observer';
 import { useInfiniteJobs } from '@/hooks/useInfiniteJobs';
+import { useTranslations } from 'next-intl';
 
 const JobCardList = () => {
+  const t = useTranslations('JobPage');
   const { ref: loadMoreRef, inView } = useInView();
   const {
     search,
@@ -59,8 +61,12 @@ const JobCardList = () => {
                 categories={category}
                 workDays={job.workWeekDays.join('/')}
                 workHours={`${job.startTime} ~ ${job.endTime}`}
-                salary={`월급 ${job.payAmount.toLocaleString()} 원`}
-                status={job.isClosed ? '채용시마감' : '상시채용'}
+                salary={t('salary', { amount: job.payAmount.toLocaleString() })}
+                status={
+                  job.isClosed
+                    ? t('closingOfRecruitment')
+                    : t('fullTimeEmployment')
+                }
                 location={location}
               />
             );

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -26,16 +28,31 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "3.2.4",
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-essentials": "8.5.2",
+    "@storybook/addon-interactions": "8.5.2",
+    "@storybook/addon-onboarding": "8.5.2",
+    "@storybook/blocks": "8.5.2",
+    "@storybook/nextjs": "8.5.2",
+    "@storybook/react": "8.5.2",
+    "@storybook/test": "8.5.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-storybook": "^0.11.2",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "postcss": "^8",
+    "storybook": "8.5.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

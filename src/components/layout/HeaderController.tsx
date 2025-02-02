@@ -3,12 +3,14 @@
 import SearchButton from '../ui/searchButton';
 import { cn } from '@/lib/utils';
 import { useFilterStore } from '@/store';
+import { useTranslations } from 'next-intl';
 
 const HeaderController = ({
   setIsOpen,
 }: {
   setIsOpen: (isOpen: boolean) => void;
 }) => {
+  const t = useTranslations('JobPage');
   const {
     isLocationSheetOpen,
     setIsLocationSheetOpen,
@@ -32,7 +34,7 @@ const HeaderController = ({
               >
                 &nbsp;
               </span>
-              {selectedProvinces?.name || selectedCity?.name || '전국'}
+              {selectedProvinces?.name || selectedCity?.name || t('nationwide')}
             </p>
           </div>
           <div

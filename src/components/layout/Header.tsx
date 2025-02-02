@@ -5,8 +5,10 @@ import SearchController from './SearchController';
 import { cn } from '@/lib/utils';
 import { useFilterStore } from '@/store';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const Header = () => {
+  const t = useTranslations('JobPage');
   const [isOpen, setIsOpen] = useState(false);
   const {
     search,
@@ -46,7 +48,7 @@ const Header = () => {
                   style={{ backgroundImage: `url(/banners/banner_gs25.png)` }}
                 />
                 <span className="text-white font-[600] text-[14px] leading-[16.8px]">
-                  전국 GS25 편의점 아르바이트 및 직원채용
+                  {t('gs25')}
                 </span>
               </div>
             </div>
@@ -67,7 +69,7 @@ const Header = () => {
                     onClick={handleReset}
                   >
                     <p className="text-[14px] text-neutral-800 font-bold leading-[18.9px] tracking-[-0.28px] capitalize">
-                      초기화
+                      {t('reset')}
                     </p>
                     <div
                       className="flex-shrink-0 size-[14px] bg-cover bg-center"
@@ -119,7 +121,7 @@ const Header = () => {
                   <button className="relative flex flex-row justify-center items-center gap-[4px]">
                     <p className="text-[14px] font-bold leading-[18.9px] tracking-[-0.28px] capitalize">
                       {!jobCategory || jobCategory.length === 0
-                        ? '직종'
+                        ? t('jobCategory')
                         : jobCategory.length === 1
                         ? jobCategory[0].i18nNames.KO_KR
                         : `${jobCategory[0].i18nNames.KO_KR} +${

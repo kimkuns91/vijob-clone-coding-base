@@ -1,8 +1,10 @@
 'use client';
 
 import { useFilterStore } from '@/store';
+import { useTranslations } from 'next-intl';
 
 const RecruitmentController = () => {
+  const t = useTranslations('JobPage');
   const { isRecruitment, setIsRecruitment } = useFilterStore();
 
   if (!isRecruitment)
@@ -17,7 +19,7 @@ const RecruitmentController = () => {
             backgroundImage: `url(/icons/checkable-small.gray.svg)`,
           }}
         />
-        <p className="text-sm line-clamp-1">채용 중</p>
+        <p className="text-sm line-clamp-1">{t('recruitment')}</p>
       </button>
     );
   return (
@@ -31,7 +33,7 @@ const RecruitmentController = () => {
           backgroundImage: `url(/icons/checked-small.blue.svg)`,
         }}
       />
-      <p className="text-sm line-clamp-1">채용 중</p>
+      <p className="text-sm line-clamp-1">{t('recruitment')}</p>
     </button>
   );
 };

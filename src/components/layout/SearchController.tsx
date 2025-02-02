@@ -5,12 +5,14 @@ import { Input } from '../ui/input';
 import SearchButton from '../ui/searchButton';
 import { useEffect } from 'react';
 import { useFilterStore } from '@/store';
+import { useTranslations } from 'next-intl';
 
 const SearchController = ({
   setIsOpen,
 }: {
   setIsOpen: (isOpen: boolean) => void;
 }) => {
+  const t = useTranslations('JobPage');
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -43,7 +45,7 @@ const SearchController = ({
             value={keyword || ''}
             onChange={(e) => setKeyword(e.target.value)}
             className="block w-full h-full max-h-[200px] rounded-[18px] text-[16px] leading-normal px-4 m-0 border-0 resize-none text-gray-900 bg-white placeholder:text-gray-400 ring-1 ring-inset ring-gray-300 focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:outline-none"
-            placeholder="일자리를 검색해보세요"
+            placeholder={t('searchPlaceholder')}
             maxLength={50}
           />
         </form>

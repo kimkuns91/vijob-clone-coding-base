@@ -30,7 +30,7 @@ export default function JobPage() {
                       }}
                     />
                     <p className="text-black text-base font-semibold tracking-[-0.32px] leading-5 line-clamp-1">
-                      환영해요!
+                      {t('greeting')}
                     </p>
                   </div>
                   <RecruitmentController />
