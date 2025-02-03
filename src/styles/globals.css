@@ -100,6 +100,12 @@
     letter-spacing: -0.02rem;
     font-weight: 600;
   }
+  .text-caption2 {
+    font-size: 0.6875rem;
+    line-height: 0.99688rem;
+    letter-spacing: -0.015rem;
+    font-weight: 500;
+  }
   .vijob-wrap-text {
     word-break: keep-all;
     overflow-wrap: anywhere;

@@ -50,7 +50,13 @@ export interface IAddress {
   zipCode: string | null;
   provinceCode: string;
   cityCode: string;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
   roadAddress: string;
+  jibunAddress: string;
+  addressDetail: string;
 }
 
 export interface IProvinces {

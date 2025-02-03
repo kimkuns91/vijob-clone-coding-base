@@ -1,92 +1,121 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
+import 'swiper/css';
 
-import InfoCard from "./InfoCard";
-import { generateDummyJobs } from "@/utils/dummyData";
-import { useRouter } from "next/navigation";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 
-// 상수 값을 상단에 정의
-const SWIPE_THRESHOLD = 50;
-const CARD_WIDTH = 366;
-const CARD_MARGIN = 32;
+import { IJob } from '@/interface';
+import InfoCard from './InfoCard';
+import LoadingSpinner from './LoadingSpinner';
+import { useFilterStore } from '@/store';
+import { useInView } from 'react-intersection-observer';
+import { useInfiniteJobs } from '@/hooks/useInfiniteJobs';
 
-const InfoCardList = ({ currentId }: { currentId: number }) => {
+interface InfoCardListProps {
+  currentId: number;
+}
+
+const InfoCardList: React.FC<InfoCardListProps> = ({ currentId }) => {
   const router = useRouter();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const jobs = generateDummyJobs();
+  const { inView } = useInView();
+  const params = useParams();
+  const locale = params?.locale as string;
 
-  // 현재 job의 인덱스 찾기
+  const {
+    search,
+    selectedProvinces,
+    selectedCity,
+    jobCategory,
+    isRecruitment,
+  } = useFilterStore();
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+    useInfiniteJobs({
+      search,
+      provinceCode: selectedProvinces?.code,
+      cityCode: selectedCity?.code,
+      categoryIds: jobCategory?.map((cat) => cat.id),
+      isRecruitment,
+    });
+
+  const jobs =
+    data?.pages.reduce<IJob[]>((acc, page) => [...acc, ...page.jobs], []) || [];
+
+  const [currentIndex, setCurrentIndex] = useState(() => {
+    return jobs.findIndex((job: IJob) => job.id === currentId);
+  });
+
   useEffect(() => {
-    const index = jobs.findIndex((job) => job.id === currentId);
-    if (index !== -1) {
-      setCurrentIndex(index);
+    if (inView && hasNextPage) {
+      fetchNextPage();
     }
-  }, [currentId, jobs]);
+  }, [inView, hasNextPage, fetchNextPage]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!touchStart) return;
-
-    const currentTouch = e.touches[0].clientX;
-    const diff = touchStart - currentTouch;
-
-    if (Math.abs(diff) > SWIPE_THRESHOLD) {
-      if (diff > 0 && currentIndex < jobs.length - 1) {
-        router.push(`/ko/job/${jobs[currentIndex + 1].id}`);
-      } else if (diff < 0 && currentIndex > 0) {
-        router.push(`/ko/job/${jobs[currentIndex - 1].id}`);
-      }
-      setTouchStart(null);
+  useEffect(() => {
+    if (currentIndex >= jobs.length - 1 && hasNextPage) {
+      fetchNextPage();
     }
-  };
+  }, [currentIndex, jobs.length, hasNextPage, fetchNextPage]);
 
-  const handleTouchEnd = () => {
-    setTouchStart(null);
-  };
+  if (status === 'pending') {
+    return (
+      <div
+        className="relative w-full min-h-[370px] touch-pan-y overflow-hidden"
+        style={{ height: '370px' }}
+      >
+        <div className="w-full h-full flex justify-center items-center">
+          <LoadingSpinner />
+        </div>
+      </div>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <div
+        className="relative w-full min-h-[370px] touch-pan-y overflow-hidden"
+        style={{ height: '370px' }}
+      >
+        <div className="w-full h-full flex justify-center items-center text-red-500">
+          에러가 발생했습니다
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
-      className="relative w-full min-h-48 touch-pan-y"
-      style={{ height: "346px", transition: "height 0.1s ease-in-out" }}
-      ref={containerRef}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      className="relative w-full min-h-[370px] touch-pan-y overflow-hidden"
+      style={{ height: '370px' }}
     >
-      <div
-        className="absolute top-0 h-fit z-0 px-[5px]"
-        style={{
-          width: `${CARD_WIDTH}px`,
-          marginLeft: `calc(${CARD_MARGIN}px)`,
-          left: `${currentIndex * -CARD_WIDTH}px`,
-          transition: "left 0.3s ease-out",
+      <Swiper
+        slidesPerView="auto"
+        centeredSlides={true}
+        spaceBetween={8}
+        grabCursor={true}
+        className="h-full px-[calc((100%-466px)/2)]"
+        initialSlide={currentIndex}
+        slideToClickedSlide={true}
+        allowTouchMove={status === 'success'}
+        onSlideChange={(swiper) => {
+          const nextJob = jobs[swiper.activeIndex];
+          if (nextJob) {
+            setCurrentIndex(swiper.activeIndex);
+            router.replace(`/${locale}/job/${nextJob.id}`, { scroll: false });
+          }
         }}
       >
-        {jobs.map((job) => (
-          <div
-            key={job.id}
-            className="absolute"
-            style={{ left: `${jobs.indexOf(job) * CARD_WIDTH}px` }}
-          >
-            <InfoCard
-              business={job.business}
-              title={job.i18nTitle.KO_KR}
-              salary={job.payAmount}
-              category="건설 · 현장"
-              period="1개월 이상"
-              workDays={job.workWeekDays}
-              workTime={{ start: job.startTime, end: job.endTime }}
-              location={job.address.roadAddress}
-            />
-          </div>
+        {jobs.map((job: IJob) => (
+          <SwiperSlide key={job.id} className="!w-[366px] h-full pt-[24px]">
+            <InfoCard job={job} currentId={currentId} />
+          </SwiperSlide>
         ))}
-      </div>
+        {isFetchingNextPage && (
+          <SwiperSlide className="!w-[366px] flex items-center justify-center" />
+        )}
+      </Swiper>
     </div>
   );
 };

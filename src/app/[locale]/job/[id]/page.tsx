@@ -1,6 +1,7 @@
 import DetailBottomNav from '@/components/layout/DetailBottmNav';
+import DynamicInfoCardList from '@/components/DynamicInfoCardList';
 import JobDetail from '@/components/JobDetail';
-import { generateDummyJobs } from '@/utils/dummyData';
+import { getJobById } from '@/utils/dummyData';
 import { notFound } from 'next/navigation';
 
 interface JobDetailPageProps {
@@ -11,12 +12,10 @@ interface JobDetailPageProps {
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
   const { id } = await params;
-
   const jobId = parseInt(id, 10);
-  const allJobs = generateDummyJobs();
-  const job = allJobs.find((job) => job.id === jobId);
+  const currentJob = getJobById(jobId);
 
-  if (!job) {
+  if (!currentJob) {
     notFound();
   }
 
@@ -25,23 +24,12 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
       <div className="relative w-full h-full overflow-hidden">
         <div className="relative overflow-x-hidden overflow-y-auto scroll-smooth w-full h-full">
           <div className="w-full h-[56px]" />
-          <div className="relative w-full flex flex-col pt-[24px]">
-            {/* 무한 좌우 스크롤 카드 구현 해야 함. api router를 쓰는게 나은지 고민 필요, 현재 카드 목록 데이터 넣어놓음*/}
-            {/* <JobCardList
-              business={job.business}
-              title={job.i18nTitle[params.lang === 'ko' ? 'KO_KR' : 'EN_US']}
-              salary={job.payAmount}
-              category="건설 · 현장"
-              period="1개월 이상"
-              workDays={job.workWeekDays}
-              workTime={{ start: job.startTime, end: job.endTime }}
-              location={job.address.roadAddress}
-            /> */}
+          <div className="relative w-full flex flex-col">
+            <DynamicInfoCardList currentId={jobId} />
           </div>
-          <div className="flex flex-col px-4 py-[30px] gap-[30px] mb-16 transition-opacity duration-200 opacity-100">
-            <JobDetail />
+          <div className="flex flex-col px-4 py-[30px] gap-[30px] mb-16">
+            <JobDetail job={currentJob} />
           </div>
-          <div className="w-full h-[56px]" />
         </div>
       </div>
       <DetailBottomNav />

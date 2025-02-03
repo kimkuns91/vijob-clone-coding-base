@@ -25,10 +25,21 @@
     "JobDetailPage": {
         "prefer": "We prefer these people!",
         "provide": "We provide these things!",
+        "viewMore": "View More",
+        "education": "No Educational Requirement",
+        "experience": "No Experience Requirement",
+        "korean": "No Korean Language Proficiency Required",
+        "longTerm": "Long-Term Commitment Not Required",
+        "insurance": "Four Major Social Insurance",
+        "bonus": "Bonuses",
         "location": "Location",
         "details": "Details",
         "period": "Application period",
-        "exampleDetail": "Recruitment of Fresh Manager at (주)hy\n\nJob Description\n    • Job Responsibilities: Delivery to fixed and subscription customers...\n    • Working Days: Monday, Tuesday, Wednesday, Thursday, Friday\n    • Employment Duration: Over 1 year (negotiable)\n    • Salary: Monthly 2,100,000 won\n\nApplicant Conditions\n    • Beginners possible\n    • Foreigners possible\n    • Long-term workers possible\n    • Residents nearby\n    • Holders of driver's license\n    • Holders of motor vehicle license\n\nWelfare\n    • Employment insurance\n    • Industrial accident insurance\n    • Health check-up support\n    • Support for childcare fees for preschool children\n    • Support for small (low-interest) loans\n    • Opportunity for overseas travel\n    • Wedding congratulatory money\n    • Condolence money for death\n    • Support for nursing/accident consolation money"
+        "exampleDetail": "Recruitment of Fresh Manager at (주)hy\n\nJob Description\n    • Job Responsibilities: Delivery to fixed and subscription customers...\n    • Working Days: Monday, Tuesday, Wednesday, Thursday, Friday\n    • Employment Duration: Over 1 year (negotiable)\n    • Salary: Monthly 2,100,000 won\n\nApplicant Conditions\n    • Beginners possible\n    • Foreigners possible\n    • Long-term workers possible\n    • Residents nearby\n    • Holders of driver's license\n    • Holders of motor vehicle license\n\nWelfare\n    • Employment insurance\n    • Industrial accident insurance\n    • Health check-up support\n    • Support for childcare fees for preschool children\n    • Support for small (low-interest) loans\n    • Opportunity for overseas travel\n    • Wedding congratulatory money\n    • Condolence money for death\n    • Support for nursing/accident consolation money",
+        "registerDate": "Registration date",
+        "deadline": "Deadline",
+        "closingOfRecruitment": "Deadline for hiring",
+        "closed": "Closed"
     },
     "SettingPage": {
         "title": "SettingPage"

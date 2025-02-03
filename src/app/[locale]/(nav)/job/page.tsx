@@ -6,7 +6,6 @@ import { useTranslations } from 'next-intl';
 
 export default function JobPage() {
   const t = useTranslations('JobPage');
-  console.log(t('title'));
 
   return (
     <>

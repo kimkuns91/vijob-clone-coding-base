@@ -1,5 +1,5 @@
 import { IJob } from '@/interface';
-import jobSample from '@/data/job.sample.json';
+import { getDummyJobs } from '@/utils/dummyData';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 interface JobsResponse {
@@ -22,13 +22,8 @@ const fetchJobs = async (
 ): Promise<JobsResponse> => {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
-  console.log(params);
-  let filteredJobs = Array(8)
-    .fill(jobSample)
-    .map((job, index) => ({
-      ...job,
-      id: cursor * 8 + index + 1,
-    }));
+  // cursor를 이용해 해당 페이지의 데이터 가져오기
+  let filteredJobs = getDummyJobs(cursor * 8);
 
   // 필터 적용
   if (params.search) {
@@ -63,7 +58,8 @@ const fetchJobs = async (
     );
   }
 
-  const nextCursor = cursor < 5 && filteredJobs.length > 0 ? cursor + 1 : null;
+  // 다음 페이지가 있는지 확인 (56개 데이터 기준으로 7페이지까지)
+  const nextCursor = cursor < 6 && filteredJobs.length > 0 ? cursor + 1 : null;
 
   return {
     jobs: filteredJobs,

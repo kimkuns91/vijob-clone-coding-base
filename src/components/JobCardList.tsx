@@ -32,7 +32,6 @@ const JobCardList = () => {
       categoryIds: jobCategory?.map((cat) => cat.id),
       isRecruitment,
     });
-  console.log(isRecruitment);
   // 무한 스크롤 구현
   useEffect(() => {
     if (inView && hasNextPage) {

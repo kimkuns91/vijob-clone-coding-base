@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { NAVER_ID } from '@/config';
 import { NextIntlClientProvider } from 'next-intl';
 import { NextLayout } from '../providers';
 import { NextProvider } from '../providers';
+import Script from 'next/script';
 import { cn } from '@/lib/utils';
 import { getMessages } from 'next-intl/server';
 import localFont from 'next/font/local';
@@ -89,6 +91,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html lang={locale} className={cn(pretendard.variable, 'antialiased')}>
+      <Script
+        type="text/javascript"
+        src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_ID}&submodules=geocoder`}
+      />
       <body className="font-pretendard">
         <NextIntlClientProvider messages={messages}>
           <NextProvider>
