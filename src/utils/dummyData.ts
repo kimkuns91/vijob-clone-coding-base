@@ -17,5 +17,5 @@ export const getDummyJobs = (start: number, count: number = 8) => {
 };
 // 특정 ID의 job을 찾는 함수
 export const getJobById = (id: number): IJob | undefined => {
-  return TOTAL_DUMMY_JOBS.find(job => job.id === id);
-}; 
+  return TOTAL_DUMMY_JOBS.find((job) => job.id === id);
+};

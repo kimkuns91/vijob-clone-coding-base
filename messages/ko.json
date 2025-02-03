@@ -39,7 +39,11 @@
         "registerDate": "등록일",
         "deadline": "마감일",
         "closingOfRecruitment": "채용시 마감",
-        "closed": "마감"
+        "closed": "마감",
+        "corporateInfomation": "기업정보",
+        "NameOfCompany": "기업명",
+        "NumberOfEmployees": "기업형태",
+        "MajorBusinessAreas": "주요사업분야"
     },
     "SettingPage": {
         "title": "내 정보"

@@ -39,7 +39,11 @@
         "registerDate": "Registration date",
         "deadline": "Deadline",
         "closingOfRecruitment": "Deadline for hiring",
-        "closed": "Closed"
+        "closed": "Closed",
+        "corporateInfomation": "Corporate Information",
+        "nameOfCompany": "Name of Company",
+        "numberOfEmployees": "Name of Representative",
+        "majorBusinessAreas": "Major Business Areas"
     },
     "SettingPage": {
         "title": "SettingPage"

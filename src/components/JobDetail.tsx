@@ -1,10 +1,12 @@
 'use client';
 
 import { useDateFormat, useDeadlineText } from '@/hooks/useDateFormat';
+import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import DetailSession from './DetailSession';
 import { IJob } from '@/interface';
+import LoadingSpinner from './LoadingSpinner';
 import PreferSection from './PreferSection';
 import dynamic from 'next/dynamic';
 import { format } from 'date-fns';
@@ -15,15 +17,35 @@ const DynamicNaverMap = dynamic(() => import('./NaverMap'), {
 });
 
 interface JobDetailProps {
-  job: IJob;
+  currentId: number;
+  lang: string;
 }
 
-const JobDetail: React.FC<JobDetailProps> = ({ job }) => {
+const JobDetail: React.FC<JobDetailProps> = ({ currentId, lang }) => {
   const t = useTranslations('JobDetailPage');
   const locale = useLocale();
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [job, setJob] = useState<IJob | null>(null);
   const { dateFormat, dateLocale } = useDateFormat(locale);
   const deadlineText = useDeadlineText(job, t);
+
+  useEffect(() => {
+    const fetchJob = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/api/job/${currentId}?lang=${lang}`);
+        const job = await response.json();
+        setJob(job);
+      } catch (error) {
+        console.error('Error fetching job:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchJob();
+  }, [currentId, lang]);
+
+  if (!job) return null;
 
   const sections = [
     {
@@ -146,6 +168,8 @@ const JobDetail: React.FC<JobDetailProps> = ({ job }) => {
       ),
     },
   ];
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <div className="flex flex-col gap-[30px]">

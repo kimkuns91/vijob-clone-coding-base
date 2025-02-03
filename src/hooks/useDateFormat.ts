@@ -10,11 +10,15 @@ export const useDateFormat = (locale: string) => {
   return { dateFormat, dateLocale };
 };
 
-export const useDeadlineText = (job: IJob, t: (key: string) => string) => {
+export function useDeadlineText(
+  job: IJob | null,
+  t: (key: string) => string
+): string {
+  if (!job) return '';
   const isDeadlinePassed = job.endDate ? isPast(job.endDate) : false;
   return isDeadlinePassed
     ? t('closed')
     : job.isClosed
     ? t('closed')
     : t('closingOfRecruitment');
-};
+}

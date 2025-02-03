@@ -1,6 +1,7 @@
 import { IJob } from '@/interface';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const DynamicNaverMap = dynamic(() => import('./NaverMap'), {
   ssr: false,
@@ -11,6 +12,7 @@ interface InfoCardProps {
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ job, currentId }) => {
+  const t = useTranslations('JobDetailPage');
   const isActive = currentId === job.id;
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -47,23 +49,25 @@ const InfoCard: React.FC<InfoCardProps> = ({ job, currentId }) => {
                 className="size-5 bg-contain bg-no-repeat"
                 style={{ backgroundImage: "url('/icons/incognito.svg')" }}
               />
-              <h3 className="text-headline1 text-black">기업 정보</h3>
+              <h3 className="text-headline1 text-black">
+                {t('corporateInfomation')}
+              </h3>
             </div>
             <div className="grid grid-cols-[auto_1fr] gap-x-5 gap-y-2.5">
               <p className="font-semibold text-neutral-800 text-xs leading-4">
-                기업명
+                {t('nameOfCompany')}
               </p>
               <p className="font-semibold text-neutral-800 text-xs leading-4 break-words">
                 {job.business.name}
               </p>
               <p className="font-semibold text-neutral-800 text-xs leading-4">
-                기업형태
+                {t('numberOfEmployees')}
               </p>
               <p className="font-semibold text-neutral-800 text-xs leading-4 break-words">
                 중견기업
               </p>
               <p className="font-semibold text-neutral-800 text-xs leading-4">
-                주요사업분야
+                {t('majorBusinessAreas')}
               </p>
               <p className="font-semibold text-neutral-800 text-xs leading-4">
                 생산 · 제조

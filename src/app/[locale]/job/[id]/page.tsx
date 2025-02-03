@@ -7,13 +7,14 @@ import { notFound } from 'next/navigation';
 interface JobDetailPageProps {
   params: Promise<{
     id: string;
+    locale: string;
   }>;
 }
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
-  const { id } = await params;
+  const { id, locale } = await params;
   const jobId = parseInt(id, 10);
-  const currentJob = getJobById(jobId);
+  const currentJob = await getJobById(jobId);
 
   if (!currentJob) {
     notFound();
@@ -28,7 +29,7 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
             <DynamicInfoCardList currentId={jobId} />
           </div>
           <div className="flex flex-col px-4 py-[30px] gap-[30px] mb-16">
-            <JobDetail job={currentJob} />
+            <JobDetail currentId={jobId} lang={locale} />
           </div>
         </div>
       </div>

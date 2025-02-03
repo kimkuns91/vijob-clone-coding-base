@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
 import CountRecentJob from '@/components/CountRecentJob';
 import Header from '@/components/layout/Header';
 import JobCardList from '@/components/JobCardList';
@@ -6,6 +10,32 @@ import { useTranslations } from 'next-intl';
 
 export default function JobPage() {
   const t = useTranslations('JobPage');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 저장된 스크롤 위치 복원
+    const savedScrollPosition = sessionStorage.getItem('jobListScrollPosition');
+    if (savedScrollPosition && scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = Number(savedScrollPosition);
+    }
+
+    // 스크롤 위치 저장
+    const handleScroll = () => {
+      if (scrollContainerRef.current) {
+        sessionStorage.setItem(
+          'jobListScrollPosition',
+          scrollContainerRef.current.scrollTop.toString()
+        );
+      }
+    };
+
+    const scrollContainer = scrollContainerRef.current;
+    scrollContainer?.addEventListener('scroll', handleScroll);
+
+    return () => {
+      scrollContainer?.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -14,6 +44,7 @@ export default function JobPage() {
         <div className="bg-bg-transparent h-full">
           <div className="relative w-full h-full overflow-hidden">
             <div
+              ref={scrollContainerRef}
               className="relative w-full h-full overflow-x-hidden overflow-y-auto no-scrollbar"
               style={{ overscrollBehavior: 'none' }}
             >

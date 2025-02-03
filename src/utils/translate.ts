@@ -1,39 +1,30 @@
-import OpenAI from 'openai';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+'use client';
 
 type SupportedLanguage = 'ko' | 'en';
 
 export async function translateText(
-  text: string, 
+  text: string,
   targetLang: SupportedLanguage
 ): Promise<string> {
   // 이미 대상 언어인 경우 번역하지 않음
   if (
-    (targetLang === 'ko' && containsOnlyKorean(text)) || 
+    (targetLang === 'ko' && containsOnlyKorean(text)) ||
     (targetLang === 'en' && containsOnlyEnglish(text))
   ) {
     return text;
   }
 
   try {
-    const completion = await openai.chat.completions.create({
-      messages: [
-        {
-          role: 'system',
-          content: `You are a translator. Translate the following text to ${targetLang === 'en' ? 'English' : 'Korean'}. Keep the translation natural and contextual.`
-        },
-        {
-          role: 'user',
-          content: text
-        }
-      ],
-      model: 'gpt-3.5-turbo',
+    const response = await fetch('/api/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, targetLang }),
     });
 
-    return completion.choices[0].message.content || text;
+    if (!response.ok) throw new Error('Translation failed');
+
+    const { translation } = await response.json();
+    return translation || text;
   } catch (error) {
     console.error('Translation failed:', error);
     return text; // 실패 시 원본 텍스트 반환
@@ -50,4 +41,4 @@ function containsOnlyKorean(text: string): boolean {
 function containsOnlyEnglish(text: string): boolean {
   const englishPattern = /^[a-zA-Z\s.,!?()]*$/;
   return englishPattern.test(text);
-} 
+}
