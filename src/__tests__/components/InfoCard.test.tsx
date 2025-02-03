@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import { IJob } from '@/interface';
 import InfoCard from '@/components/InfoCard';
@@ -72,28 +72,31 @@ describe('InfoCard', () => {
     },
   } as IJob;
 
-  test('카드 클릭 시 앞면/뒷면 전환', () => {
+  test('카드 클릭 시 앞면/뒷면 전환', async () => {
     // Given
     render(<InfoCard job={mockJob} currentId={1} />);
 
     // When - 카드 클릭
-    const card = screen.getByText('테스트 채용공고');
-    fireEvent.click(card);
+    await act(async () => {
+      fireEvent.click(screen.getByText('글로벌 마케터 모집합니다'));
+    });
 
-    // Then - 뒷면의 기업정보가 보여야 함
+    // Then
     expect(screen.getByText('기업 정보')).toBeInTheDocument();
-    expect(screen.getByText('테스트 회사')).toBeInTheDocument();
+    expect(screen.getByText('비잡')).toBeInTheDocument();
   });
 
   test('현재 선택된 카드는 강조 스타일 적용', () => {
     // Given - 현재 선택된 카드로 렌더링
-    const { container } = render(<InfoCard job={mockJob} currentId={1} />);
+    const { container } = render(<InfoCard job={mockJob} currentId={100} />);
 
     // When
-    const cardFront = container.querySelector('[style*="linear-gradient"]');
+    const cardFront = container.querySelector('.absolute.w-full');
 
-    // Then - 강조 스타일이 적용되어 있어야 함
-    expect(cardFront).toBeInTheDocument();
+    // Then
+    expect(cardFront).toHaveStyle({
+      backgroundImage: expect.stringContaining('linear-gradient')
+    });
   });
 
   test('주소 복사 버튼 클릭 시 클립보드에 주소 복사', () => {
@@ -108,10 +111,12 @@ describe('InfoCard', () => {
     render(<InfoCard job={mockJob} currentId={1} />);
 
     // When - 카드를 뒤집고 주소 복사 버튼 클릭
-    fireEvent.click(screen.getByText('테스트 채용공고'));
+    fireEvent.click(screen.getByText('글로벌 마케터 모집합니다'));
     fireEvent.click(screen.getByText('주소 복사'));
 
     // Then - 클립보드에 주소가 복사되어야 함
-    expect(mockClipboard.writeText).toHaveBeenCalledWith('서울시 강남구');
+    expect(mockClipboard.writeText).toHaveBeenCalledWith(
+      '경기도 성남시 분당구 판교동'
+    );
   });
 });
